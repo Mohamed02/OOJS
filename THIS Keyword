@@ -1,1 +1,75 @@
 
+/*
+Various scenarios this is used
+
+
+1. within a method of an object to refer the properties of an object
+
+
+  var Student={
+      name: "Ismail",
+      age: 28
+      displayName: function(){
+      console.log("my name is "+ this.name);
+      }
+    }
+    
+ 2. To refer to the Global context within an fuction defined in global context
+ 
+  function globalFunc(){
+  
+    console.log(this);  ///in browser this refers to window object , where us in nodejs server it refers to Global object
+  
+  }
+  
+  to avoid confusion due to  'this' refering to window object, use the statement 'use strict' in the begining of js file. By doing so 'this will no more refer to the window object'
+ 
+ 
+ 3. Function Constructor to refer to its properties.
+ 
+
+  function Person(){
+  this.name="personname";
+  this.age=23
+  }
+ 
+ 
+ 4. Within Event Handler to denote the DOM elment
+ 
+             const button = document.createElement('button')
+            button.textContent = 'Click me'
+            document.body.append(button)
+
+            button.addEventListener('click', function (event) {
+              console.log(this)
+            })
+            
+            
+     
+     
+     Call and Apply
+call and apply are very similar—they invoke a function with a specified this context, and optional arguments. 
+The only difference between call and apply is that call requires the arguments to be passed in one-by-one, and apply takes the arguments as an array.
+
+In this example, we'll create an object, and create a function that references this but has no this context.
+
+
+const book = {
+  title: 'Brave New World',
+  author: 'Aldous Huxley',
+}
+
+function summary() {
+  console.log(`${this.title} was written by ${this.author}.`)
+}
+
+summary()
+
+
+refer https://www.taniarascia.com/this-bind-call-apply-javascript/ 
+
+
+
+
+            
+*/
