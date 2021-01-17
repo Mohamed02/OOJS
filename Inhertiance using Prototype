@@ -84,4 +84,4 @@ henObj1.eat();        // Overriden eat method of LivingBeing
 
 henObj1.noOfEyes      // Inhertied the property of parent class(LivingBeing)
 
-henObj1.reproduce(   //Inherited mehtod of parent class (Birds)
+henObj1.reproduce()   //Inherited mehtod of parent class (Birds)
