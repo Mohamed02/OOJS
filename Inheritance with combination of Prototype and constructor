@@ -1,0 +1,56 @@
+Drawback of Inhertiance using constructor stealing.
+
+    Execute the code in teh file Inheritance usign constructor and then execute followng scripts
+
+        
+          henObj2=new Hen();
+        henObj1.move== henObj2.move . //retruns false
+
+  Issue: Each instance carries new copy of properties and methods , there is not way to share properties or methods among instances
+
+
+Drawback of Inhertiance using prototype.
+
+    Execute the code in teh file Inheritance usign constructor and then execute followng scripts
+
+        henObj1.noOfHead=3
+          henObj2=new Hen();
+          henObj2.noOfHead// this would return 1 or whatever declared in the LivingBeing constructed
+
+
+  Issue: Since all the instances share the same copy of properties , When a property is modifed by one instance, it would affect all other instance.
+  
+  
+  Solution to the above problem: Go for combination of Costructor stealing and Prototype:
+  
+  for properties or methods you dont want to share it across instances , put it in constructor, the properties you want to be accessed across all the instances 
+  put in proto type
+  
+  
+  
+          function SuperType(name){
+              this.name = name;
+              this.colors = [“red”, “blue”, “green”];
+              }
+              SuperType.prototype.sayName = function(){
+              alert(this.name);
+        };
+        function SubType(name, age){
+        //inherit properties
+        SuperType.call(this, name);
+        this.age = age;
+        }  
+
+          SubType.prototype = new SuperType();
+        SubType.prototype.sayAge = function(){
+        alert(this.age);
+        };
+        var instance1 = new SubType(“Nicholas”, 29);
+        instance1.colors.push(“black”);
+        alert(instance1.colors); //”red,blue,green,black”
+        instance1.sayName(); //”Nicholas”;
+        instance1.sayAge(); //29
+        var instance2 = new SubType(“Greg”, 27);
+        alert(instance2.colors); //”red,blue,green”
+        instance2.sayName(); //”Greg”;
+        instance2.sayAge(); //27
