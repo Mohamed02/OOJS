@@ -1,0 +1,44 @@
+/*
+1. Accessing prototype Property within Constructor
+2. Local variables within the constructor has different copies for each instance created out of the constructor. 
+*/
+
+School=function(){
+ var studentCount=0;
+ var studentID=0;
+ this.getStudentCount=function(){
+     return studentCount
+ };
+ this.addStudent=function(){
+     studentCount++;
+ };
+ this.getSharedStudentCount=function(){
+     return this.sharedStudentCount .  /* property of prototype object (sharedStudentCount) is accessed */
+ }
+};
+
+Class=function(){
+  this.className="Mathemetics";
+}
+
+Class.prototype= new School()
+
+School.prototype.sharedStudentCount=10;
+
+classObj= new Class();
+
+console.log("Student Count "+classObj.getStudentCount());
+
+console.log("Student Count "+classObj.getSharedStudentCount());
+
+schoolObj= new School();
+schoolObj.addStudent();
+
+console.log("Student Count from School Obj "+schoolObj.getStudentCount());
+console.log("Student Count from Class Obj"+classObj.getStudentCount());
+
+schoolObj2= new School();
+
+console.log("Student Count from School Obj "+schoolObj2.getStudentCount());
+
+console.log("Student Count from School Obj "+schoolObj2.getSharedStudentCount());
