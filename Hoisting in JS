@@ -1,1 +1,56 @@
 
+Hoisting in JS
+
+
+  1. Execut the below code in browser console
+  
+  console.log("the value of a is "+a);   //thrws the Reference error which indicates teh a is neither declared nor defined
+  
+  2. Execute the below code
+  
+  console.log("the value of a is "+a);    //the value is of a is undefined
+  var a;
+  
+  /* here though a is declared after console statment, variable declaration of a is hoisted to top the scope
+  
+  
+  Issues due to hoisting
+ 
+          / Initialize x in the global scope
+        var x = 100
+
+        function hoist() {
+          // A condition that should not affect the outcome of the code
+          if (false) {
+            var x = 200
+          }
+          console.log(x)
+        }
+
+        hoist()
+        
+        
+   /// we expect the above function to return 100. But it return undefined. Thats becoz withing the function hoist(), the variable x declaration will get hoisted 
+   to top of scope . but as it value is not initialized it will return undefined error.
+   
+   
+   to avoid this it is recommended to use the let keyword constant, whose declaration will not get hoisted, as those declartion is confied within the block scope
+   
+   
+   
+          / Initialize x in the global scope
+        var x = 100
+
+        function hoist() {
+          // A condition that should not affect the outcome of the code
+          if (false) {
+            let x = 200
+          }
+          console.log(x)
+        }
+
+        hoist()
+   
+   
+  
+  
