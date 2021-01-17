@@ -1,1 +1,83 @@
 /*Implementing Inheritance using Constructor Stealing*/
+
+
+/**
+
+                                LivingBeing   (noOfEyes, noOfHeads, eat(), move())
+                                    |
+                                    |
+               ---------------------------------------------
+               |                                            |
+               |                                            |
+            Birds (noOfLegs, reproduce())                 Animals (noOfLegs, reproduce())  
+             |                                               |
+        ------------                                  ---------------
+        |          |                                  |             |
+     Eagle        Hen                               Tiger           Goat
+
+**/
+
+
+function LivingBeing(){
+   this.noOfHead=1;
+   this.noOfEyes=2;
+  this.eat=function(){
+      console.log("We Eat")
+  };
+  this.move=function(){
+      console.log("We Move")
+  };
+
+}
+
+function Animal(){
+     LivingBeing.call(this);
+     this.reproduce=function(){ console.log("we give birth");};
+}
+function Tiger(){
+    Animal.call(this);
+    this.eat=function(){
+        console.log("we eat flesh");
+    }
+}
+
+
+function Birds(){
+   LivingBeing.call(this);
+    this.reproduce=function(){ console.log("we lay eggs");};
+}
+
+function Goat(){
+   Animal.call(this);
+    this.eat=function(){
+        console.log("we eat only plants");
+    }
+}
+
+function Eagle(){
+ Birds.call(this);
+    this.move=function(){
+        console.log("we fly high");
+    };
+    this.eat=function(){
+        console.log("we eat decayed animals and birds");
+    }
+}
+
+function Hen(){
+ Birds.call(this);
+    this.move=function(){
+        console.log("we walk and fly");
+    };
+    this.eat=function(){
+        console.log("we eat grains");
+    }
+}
+
+henObj1= new Hen()    //Create object of hen
+
+henObj1.eat();        // Overriden eat method of LivingBeing
+
+henObj1.noOfEyes      // Inhertied the property of parent class(LivingBeing)
+
+henObj1.reproduce()   //Inherited mehtod of parent class (Birds)
