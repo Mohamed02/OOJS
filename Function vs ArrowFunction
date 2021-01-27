@@ -1,0 +1,62 @@
+/************** Code Snippen 1    *******************/
+function human(){
+    this.name="ismail";
+    this.age=31;
+    var a=12;
+    this.getDetails=function(){
+        console.log("get details called " +this.name +this.age + a );
+        setTimeout(function(){console.log("printing instance varialbel after 10 sec "+a)},1000)
+
+    }
+}
+
+ismail= new human();
+ismail.getDetails();
+
+/************** Code Snippen 2  *******************/
+function human(){
+    this.name="ismail";
+    this.age=31;
+    var a=12;
+    this.getDetails=function(){
+        console.log("get details called " +this.name +this.age + a );
+        setTimeout(function(){console.log("printing instance varialbel after 10 sec "+this.age)},1000)
+
+    }
+}
+
+ismail= new human();
+ismail.getDetails();
+
+ /************** Code Snippen 3  *******************/
+function human(){
+    this.name="ismail";
+    this.age=31;
+    var a=12;
+    this.getDetails=function(){
+         that= this
+        console.log("get details called " +this.name +this.age + a );
+        setTimeout(function(){console.log("printing instance varialbel after 10 sec "+that.age)},1000)
+
+    }
+}
+
+ismail= new human();
+ismail.getDetails();
+
+/************** Code Snippen 4 *******************/     
+function human(){
+    this.name="ismail";
+    this.age=31;
+    var a=12;
+    this.getDetails=function(){
+        console.log("get details called " +this.name +this.age + a );
+        setTimeout(()=>{ 
+            console.log("printing instance varialbel after 10 sec "+this.age)
+            },1000)
+
+    }
+}
+
+ismail= new human();
+ismail.getDetails();
