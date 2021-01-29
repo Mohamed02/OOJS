@@ -26,7 +26,7 @@ var pilots = [
     name: "Temmin 'Snap' Wexley",
     years: 30,
   },
-  {
+  { 
     id: 41,
     name: "Tallissan Lintra",
     years: 16,
@@ -39,5 +39,22 @@ var pilots = [
 ];
 
 
-var TotalExperience=pilots.reduce((accumulator,piot)=> accumulator+piot.years,0)
+var TotalExperience=pilots.reduce((accumulator,piot)=> accumulator+piot.years,0)  // This returns the total experience of all the pilots
+
+var MostExpPilot= pilots.reduce((seniorPilot,pilot) => { return ((seniorPilot.years) && (seniorPilot.years > pilot.years))? seniorPilot:pilot },{})
+/*the above as well below one works the same , just note that return statement and the curly braces are removed*/
+var MostExpPilot= pilots.reduce((seniorPilot,pilot) => (((seniorPilot.years) && (seniorPilot.years > pilot.years))? seniorPilot:pilot),{})
+
+
+FILTER: This is used if you want to filter out some of the objects from the array.
+
+var rebels = pilots.filter(function (pilot) {
+  return pilot.faction === "Rebels";
+});
+var empire = pilots.filter(function (pilot) {
+  return pilot.faction === "Empire";
+});
+
+
+
 
