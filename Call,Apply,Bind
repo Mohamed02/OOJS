@@ -1,1 +1,32 @@
 
+BIND:
+Bind is used to create a copy of a function, whose context (this) is tied to an object passed along with the bind function
+
+function printname(){
+console.log("Name is "+this.name)
+}
+obj1={name:"Ismail"}
+user1= printname.bind(obj1);
+user1();
+
+
+When the above function is writtern as arrow function bind wont work because , arrow funciton doesnt have a context(this) associated with it. when we refere this 
+inside an arrow function , it will refer to the parent context.
+
+CALL and APPLY:
+
+Call is used to invoke a function by passing a context to it.
+
+function printname(a,b){
+console.log("Name is "+this.name+"a :"+a+" b: "+b)
+}
+printname.call({name:"Ismail"},"HI","Hellow");
+printname.apply({name:"Ismail"},["HI","Hellow"]);
+
+
+
+
+
+
+
+
