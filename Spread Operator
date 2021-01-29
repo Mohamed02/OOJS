@@ -1,0 +1,25 @@
+Spread Syntax
+
+1. It is used to pass the entire Iterable object(for e.g array) as function arguments
+
+function sum(a,b,c){
+console.log(a+b+c);
+}
+var arr1=[1,2,5]
+
+sum(...arr1)
+
+
+2. Copy/merge content of one object to another
+
+obj1={"greeting":"Hellow World","exit":" Thanks you "}
+obj2={"greeting":"Hellow universe"}
+obj2={...obj1}
+
+
+3. Copy/concatenate array
+
+arr1=[2,3,4]
+arr2=[3,4,6]
+arr3=[...arr1, ...arr2]
+arr4=[...arr1]
