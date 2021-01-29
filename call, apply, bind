@@ -1,0 +1,43 @@
+Refer: https://medium.com/poka-techblog/simplify-your-javascript-use-map-reduce-and-filter-bd02c593cc2d
+
+MAP:
+Map can be used when you want to create a new iterable object whose values are derived fromt he existing iterable object
+
+var officers = [
+  { id: 20, name: 'Captain Piett' },
+  { id: 24, name: 'General Veers' },
+  { id: 56, name: 'Admiral Ozzel' },
+  { id: 88, name: 'Commander Jerjerrod' }
+];
+
+officers.map(officer=>officer.id )
+
+Reduce:
+Reduce can be used when you want to aggregate the derived results of each elements in iterable (array)
+
+var pilots = [
+  {
+    id: 10,
+    name: "Poe Dameron",
+    years: 14,
+  },
+  {
+    id: 2,
+    name: "Temmin 'Snap' Wexley",
+    years: 30,
+  },
+  {
+    id: 41,
+    name: "Tallissan Lintra",
+    years: 16,
+  },
+  {
+    id: 99,
+    name: "Ello Asty",
+    years: 22,
+  }
+];
+
+
+var TotalExperience=pilots.reduce((accumulator,piot)=> accumulator+piot.years,0)
+
