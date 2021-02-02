@@ -61,7 +61,7 @@ function human(){
     this.getDetails=function(){
         console.log("get details called " +this.name +this.age + a );
         setTimeout(()=>{ 
-            console.log("printing instance varialbel after 10 sec "+this.age)
+            console.log("printing instance varialbel after 10 sec "+this.name)
             },1000)
 
     }
@@ -69,3 +69,22 @@ function human(){
 
 ismail= new human();
 ismail.getDetails();
+
+
+/************** Code Snippen 5 *******************/     
+function human(){
+    this.name="ismail";
+    this.age=31;
+    var a=12;
+    this.getDetails=function(){
+        console.log("get details called " +this.name +this.age + a );
+        return ()=>{ 
+            console.log("printing instance varialbel after 10 sec "+this.name)
+            };
+    }
+}
+
+ismail= new human();
+var tempfun=ismail.getDetails();
+ismail.name="newIsmail"
+tempfun();
