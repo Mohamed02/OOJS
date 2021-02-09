@@ -19,6 +19,7 @@
 function LivingBeing(){
    this.noOfHead=1;
    this.noOfEyes=2;
+   this.migration=['walk'];  
   this.eat=function(){
       console.log("We Eat")
   };
