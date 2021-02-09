@@ -13,12 +13,22 @@ Drawback of Inhertiance using prototype.
 
     Execute the code in teh file Inheritance usign constructor and then execute followng scripts
 
-        henObj1.noOfHead=3
-          henObj2=new Hen();
-          henObj2.noOfHead// this would return 1 or whatever declared in the LivingBeing constructed
+        TigerA= new Tiger();
+        GoatB= new Goat();
+             
+        TigerA.migration // the returns an array of one element 'walk'.
+        TigerA.migraiton.push('run');  //now let us push value in the migration array
+        
+        GoatB.migration // this returns of array of two element - walk and run.
 
-
-  Issue: Since all the instances share the same copy of properties , When a property is modifed by one instance, it would affect all other instance.
+  Issue: Since all the instances share the same copy of instances properties( applicable only for arrays and Objects which are passed by reference ). 
+  When a property is modifed by one instance, it would affect all other instance. this issue is not appliable when we modify primitive values such as string on 
+  integer
+        TigerA.noOfEyes  // returns 2
+        
+        TigerA.noOfEyes=4
+        
+        GoatB.noOfEyes //returns 2 and it is remains un affected by change in TigerA.
   
   
   Solution to the above problem: Go for combination of Costructor stealing and Prototype:
