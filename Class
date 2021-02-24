@@ -54,7 +54,7 @@ Creating and Accessing static variable
                                               static longDescription;
                                               static description = 'I square the triple of any number you provide';
                                               static triple(n) {
-                                                return super.triple(n) * super.triple(n);
+                                                return super.triple(n) * super.triple(n);     // this is how we call the static method of Parent Class
                                               }
                                             }
 
@@ -69,7 +69,7 @@ Creating and Accessing static variable
                                             console.log(BiggerTriple.longDescription);  // undefined
                                             console.log(BiggerTriple.customName);       // 'Tripler'
 
-                                            console.log(tp.triple());         // 'tp.triple is not a function'.
+                                            console.log(tp.triple());         // 'tp.triple is not a function. becoz the static not method cannot be accessed by intances of a Class
 
 
 Private Variables in Classes:
@@ -90,14 +90,35 @@ Private Variables in Classes:
                 }
 
 
-//snippets
 
-class ClassWithPrivateStaticField {
-  static #PRIVATE_STATIC_FIELD
+                    class ClassWithPrivateStaticField {
+                      static #PRIVATE_STATIC_FIELD
 
-  static publicStaticMethod() {
-    ClassWithPrivateStaticField.#PRIVATE_STATIC_FIELD = 42
-    return ClassWithPrivateStaticField.#PRIVATE_STATIC_FIELD
-  }
-}
+                      static publicStaticMethod() {
+                        this.#PRIVATE_STATIC_FIELD = 42
+                        return this.#PRIVATE_STATIC_FIELD
+                      }
+                    }
 
+
+Accessing  Private Static variable from Child Class
+
+
+           class BaseClassWithPrivateStaticField {
+            static #PRIVATE_STATIC_FIELD
+
+            static basePublicStaticMethod() {
+              this.#PRIVATE_STATIC_FIELD = 42
+              return this.#PRIVATE_STATIC_FIELD
+            }
+          }
+
+          class SubClass extends BaseClassWithPrivateStaticField { }
+
+          let error = null
+
+          try {
+            SubClass.basePublicStaticMethod() // this will error out 
+          } catch(e) { error = e}
+
+          console.assert(error instanceof TypeError)
