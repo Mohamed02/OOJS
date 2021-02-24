@@ -1,0 +1,103 @@
+ES6 - Class
+
+Classes help to levarage Inhertiance in JavaScript. Otherwise it can be achieved though Prototypical Inhertiance which require multiple lines of code.
+
+Difference between using a class and funciton  for creation of object is ..class will not get hoisted where as funciton will get hoisted.
+
+
+
+Creating an Object
+
+          
+          class Shape {
+            constructor(type) {
+              this.type = "Shape";
+            }
+          }
+           shape= new Shape();
+           consle.log(shape.type);
+       
+       
+Creating and Accessing static variable 
+                class Shape {
+                          constructor(type) {
+                                        Shape.shapeCount++;
+                                        this.type = "Shape";
+                                        console.log("Shape Count is "+  Shape.shapeCount);      //note how static variable is accessed from non static method/constructor
+                                        console.log("Shape Count is "+  this.constructor.shapeCount);  //note how static variable is accessed from non static method/constructor
+                           }
+                            static shapeCount=0;
+                            static getShapeCount=function(){
+                                  console.log("No of Shapes created so far is "+  this.shapeCount);   //note how static variable is accessed from static method
+                                }
+                                
+                          }
+                   shape= new Shape();
+                   consle.log(shape.type);
+                   
+                   shape.shapeCount // this will return undefined, as static variables or methods cannot be accessed from the instances.
+                   
+                   
+ Static Variable/methods with Inheritances
+ 
+
+
+                                             class Triple {
+                                              static customName = 'Tripler';
+                                              static description = 'I triple any number you provide';
+                                              static triple(n = 1) {
+                                                return n * 3;
+                                              }
+                                            }
+
+                                            class BiggerTriple extends Triple {
+                                              static longDescription;
+                                              static description = 'I square the triple of any number you provide';
+                                              static triple(n) {
+                                                return super.triple(n) * super.triple(n);
+                                              }
+                                            }
+
+                                            console.log(Triple.description);   // 'I triple any number you provide'
+                                            console.log(Triple.triple());      // 3
+                                            console.log(Triple.triple(6));     // 18
+
+                                            var tp = new Triple();
+
+                                            console.log(BiggerTriple.triple(3));        // 81 (not affected by parent's instantiation)
+                                            console.log(BiggerTriple.description);      // 'I square the triple of any number you provide'
+                                            console.log(BiggerTriple.longDescription);  // undefined
+                                            console.log(BiggerTriple.customName);       // 'Tripler'
+
+                                            console.log(tp.triple());         // 'tp.triple is not a function'.
+
+
+Private Variables in Classes:
+
+
+                class ClassWithPrivateField {
+                  #privateField
+                }
+
+                class ClassWithPrivateMethod {
+                  #privateMethod() {
+                    return 'hello world'
+                  }
+                }
+
+                class ClassWithPrivateStaticField {
+                  static #PRIVATE_STATIC_FIELD
+                }
+
+
+//snippets
+
+class ClassWithPrivateStaticField {
+  static #PRIVATE_STATIC_FIELD
+
+  static publicStaticMethod() {
+    ClassWithPrivateStaticField.#PRIVATE_STATIC_FIELD = 42
+    return ClassWithPrivateStaticField.#PRIVATE_STATIC_FIELD
+  }
+}
+
