@@ -42,7 +42,9 @@ Hoisting in JS
         function hoist() {
           
           console.log(x)
+          if(3==4){
             let x = 200
+            }
           
         }
 
