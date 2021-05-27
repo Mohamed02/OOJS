@@ -47,7 +47,7 @@ Various scenarios this is used
             
      
      
-     Call and Apply
+     Call Apply & BIND 
 call and apply are very similar—they invoke a function with a specified this context, and optional arguments. 
 The only difference between call and apply is that call requires the arguments to be passed in one-by-one, and apply takes the arguments as an array.
 
