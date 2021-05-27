@@ -24,9 +24,38 @@ printname.call({name:"Ismail"},"HI","Hellow");
 printname.apply({name:"Ismail"},["HI","Hellow"]);
 
 
+Why do we need BIND
+
+/* execute the code snippet and see the result */
 
 
+var name="Iba";
+
+student={
+    name:"Ismail",
+    printName:function(){console.log(this.name)},
+    getPrintFunc:function(){
+       return this.printName;
+    }
+}
+
+func=student.getPrintFunc();
+func();
+
+/* and now execute the code snippet and see the result */
 
 
+var name="Iba";
+
+student={
+    name:"Ismail",
+    printName:function(){console.log(this.name)},
+    getPrintFunc:function(){
+       return this.printName.bind(this);   //note the change here
+    }
+}
+
+func=student.getPrintFunc();
+func();
 
 
