@@ -15,6 +15,13 @@ officers.map(officer=>officer.id )
 Reduce:
 Reduce can be used when you want to aggregate the derived results of each elements in iterable (array)
 
+                The reducer function takes four arguments:
+
+                Accumulator
+                Current Value
+                Current Index
+                Source Array
+
 var pilots = [
   {
     id: 10,
@@ -47,6 +54,12 @@ var MostExpPilot= pilots.reduce((seniorPilot,pilot) => (((seniorPilot.years) && 
 
 
 FILTER: This is used if you want to filter out some of the objects from the array.
+
+filter((element) => { ... } )
+filter((element, index) => { ... } )
+filter((element, index, array) => { ... } )
+
+
 
 var rebels = pilots.filter(function (pilot) {
   return pilot.faction === "Rebels";
