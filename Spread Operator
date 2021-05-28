@@ -9,6 +9,15 @@ var arr1=[1,2,5]
 
 sum(...arr1)
 
+        OR
+        
+        function sum(...num){
+            console.log(num[0]);
+            }
+            var arr1=[1,2,5]
+
+            sum(...arr1)
+
 
 2. Copy/merge content of one object to another
 
