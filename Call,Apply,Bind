@@ -58,4 +58,4 @@ student={
 func=student.getPrintFunc();
 func();
 
-
+Refer https://github.com/Mohamed02/TypeScript/Readme.txt for new syntax introduced in ES6
