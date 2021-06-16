@@ -9,7 +9,7 @@ CLOSURE:
     
  Callback Function:
         In the below function , when the settimeout is executed, the anonymous callback function within settimeout will get executed after 1000ms , When the anonymous call back function 
-        is executed it will be executed in the global scope and not inside the function scope of student.
+        is executed it will be executed in the global scope and not inside the function scope of student. However the anonymous function can access teh variable name.
 function student(){ 
             var name="Ismail"; 
             setTimeout(function(){ console.log(name);},1000);
