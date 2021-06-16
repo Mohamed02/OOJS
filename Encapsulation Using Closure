@@ -14,3 +14,11 @@ function student(){
             var name="Ismail"; 
             setTimeout(function(){ console.log(name);},1000);
             }
+
+
+SIDE EFFECTS and PURE FUNCTION:
+
+While we invoke the funciton , it will do some execution and return some values. In case if the function modifies the value of variable outside its scope, then it is called as side effect.
+
+A function is called PURE function when there is zero side effect or if it doenst modify anything outside its scope.
+
