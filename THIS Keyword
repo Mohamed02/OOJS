@@ -73,3 +73,12 @@ refer https://www.taniarascia.com/this-bind-call-apply-javascript/
 
             
 */
+
+CONTEXT vs SCOPE
+
+Scope is limit within which a variable for accessing. 
+
+   When a particular variable is declared and can be accessed only within a function then it is a function scope.
+   When a particular variable is declared globally, then it can be accessed globally, which is a global scope.
+   When a particular variable is declared in a block, then it can be accessed only withing the blaock , which is a block scope
+   When a particular variable is declared on an outer function, then it can be accessed withing the inner function, which is a lexical scope.
