@@ -22,3 +22,11 @@ While we invoke the funciton , it will do some execution and return some values.
 
 A function is called PURE function when there is zero side effect or if it doenst modify anything outside its scope.
 
+
+
+Higher Order Funciton:
+
+Higher order functions are functions which takes another functions as input parameter and executes that . Thus the Higher order funcitons remains generic as much as possible.
+
+Array.Map is one such higher order function which will get transform the input array values into a new array values whose output is determined by execution of function which is 
+given as input parameter.
