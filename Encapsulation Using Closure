@@ -1,1 +1,16 @@
 
+CLOSURE:
+ 
+ It is the capablity of Javascript which facilitates , accessing a variable within a scope(inner scope) from outer scope.
+ 
+ Closure can be used to implement 
+    -> Encapsulation
+    -> Callback function
+    
+ Callback Function:
+        In the below function , when the settimeout is executed, the anonymous callback function within settimeout will get executed after 1000ms , When the anonymous call back function 
+        is executed it will be executed in the global scope and not inside the function scope of student.
+function student(){ 
+            var name="Ismail"; 
+            setTimeout(function(){ console.log(name);},1000);
+            }
