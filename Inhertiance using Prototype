@@ -1,6 +1,8 @@
 
 PROTOTYPE CHAINING:
 
+        Note: Refer Professional Javascript for Web Developers Nicholas.c. Zakas page no 156(How protoype works).
+        
 In Javascript functions (constructor as well as normal funcction) are object, they have properties and methods.
 
 Let us talk about a custom constructor - Student
@@ -14,12 +16,13 @@ Now let us instantiate the Student Constructor
     std1= new Student(100,"13/09/1991");
     
     While instantiating student object , it is noted that all the properties (Id and Dob) and methods (getExactAge) of the custom constructor Student will also be added part of the 
-    instantiated object std1. And for each object created out of Student constructor have these properties and methods, however each have a different copies with different values.
+    instantiated object std1. And for each object created out of Student constructor will have these properties and methods, however each have a own copies of these properties and they are called
+    as own properties.
     
       std1.Id // prints 100
       std1.Dob //prints 13/09/1991
       std1.getExactAge() //executtes getExactAge.
-     
+      
      let us instantiate the second object
     std2=  new Student(101,"10/09/1993")
     
@@ -29,12 +32,12 @@ Now let us instantiate the Student Constructor
       std1.getExactAge==std2.getExactAge //return false as both the object have a different copiies of the function.
       
    Every functions(Normal function,custom constructor and Inbuilt constructor(Function)) in javascirpt  will have a property called Prototype which points to an object. And while instantiating the 
-   constructor, all the properties and methods of the ProtoType Object will become the properties and methods of the instantiated object. However each instantiated object shares same 
-   copies of those properties and methods. When one those properties or methods are modified in one of the object , the changes will get reflected on all the other instanticated object.
+   constructor, all the properties and methods of the ProtoType Object will become indirectly the properties and methods of the instantiated object. However each instantiated object shares one adn the same 
+   copy of these properties and methods. When one those properties or methods are modified in one of the object , the changes will get reflected on all the other instanticated object.
    
    Which Object does the prototype points to ? It points to an Javascript "Object". I can also point to any object, even the one which you have created/instantiated when you implement inhertiance.
    
-   What are the attributes of prototype object?  It has a method and properties which any javscript object has. Here are some of the attributes which comes by default on any Object.
+   What are the attributes of prototype object?  It has method and properties which any javscript object has. Here are some of the attributes which comes by default on any Object.
    
                             Properties: 
                              1. __proto__
@@ -49,7 +52,33 @@ Now let us instantiate the Student Constructor
                              8. __defineGetter__ and __defineSetter__
                              9.__lookupGetter__ and __lookupSetter__
     
+    The constructor methods points to the Student Constructor itself   
+            Student.prototype.constructor==Student //returns true
     
+    We can even add or modify the property/method of the Prototype object from the Constructor
+            Student.prototype.sayHellow= function(){console.log("hellow")}
+    As said before all the object share teh same copies of Properties and mehtods whcih are derived from Prototype Object.
+            std1.constructor==std2.constructor  //returns true
+            std1.isPrototypeOf==std2.isPrototypeOf //retrns true
+            std1.sayHellow==std2.sayHellow
+            
+        std1.hasOwnProperty("Id") // returns true
+        std1.hasOwnProperty("Dob") // returns true
+        std1.hasOwnProperty("getExactAge") // returns true
+        std1.hasOwnProperty("sayHellow") // returns false
+        
+        when you try to access the property or method as std.Id, it first check if the there is an own property of std object called Id, If it finds one , else it will check if
+        the prototype object has a property called Id, if it finds one then it will return that. else it will repeat this till it reaches the root object and finally returns undefined if 
+        nothing is found.
+        
+            
+     The same as the way we access the prototype object from teh constructor Student by Student.prototype, We can access the prototype object from  the instantiated object std1 or std 2
+     usign a secret link called __proto__. 
+     std1.__proto__===Student.prototype //returns true
+     std1.__proto__== std2.__proto__ //returns true
+
+    Now what does Student.prototype.__proto__ points to ?  it will point to the root Object of javascirpt, unless we 
+
 
             1. All the properties and methods of the Student Constructor  
                   AND
