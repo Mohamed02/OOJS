@@ -1,4 +1,63 @@
 
+PROTOTYPE CHAINING:
+
+In Javascript functions (constructor as well as normal funcction) are object, they have properties and methods.
+
+Let us talk about a custom constructor - Student
+    function Student(id,dob){
+      this.Id=id;
+      this.Dob=dob;
+      this.getExactAge= function(){  /*code to calcualte and retrun age*/}
+    }
+
+Now let us instantiate the Student Constructor
+    std1= new Student(100,"13/09/1991");
+    
+    While instantiating student object , it is noted that all the properties (Id and Dob) and methods (getExactAge) of the custom constructor Student will also be added part of the 
+    instantiated object std1. And for each object created out of Student constructor have these properties and methods, however each have a different copies with different values.
+    
+      std1.Id // prints 100
+      std1.Dob //prints 13/09/1991
+      std1.getExactAge() //executtes getExactAge.
+     
+     let us instantiate the second object
+    std2=  new Student(101,"10/09/1993")
+    
+      std1.Id // prints 101
+      std1.Dob //prints 10/09/1993
+      std1.getExactAge() //executtes getExactAge.
+      std1.getExactAge==std2.getExactAge //return false as both the object have a different copiies of the function.
+      
+   Every functions(Normal function,custom constructor and Inbuilt constructor(Function)) in javascirpt  will have a property called Prototype which points to an object. And while instantiating the 
+   constructor, all the properties and methods of the ProtoType Object will become the properties and methods of the instantiated object. However each instantiated object shares same 
+   copies of those properties and methods. When one those properties or methods are modified in one of the object , the changes will get reflected on all the other instanticated object.
+   
+   Which Object does the prototype points to ? It points to an Javascript "Object". I can also point to any object, even the one which you have created/instantiated when you implement inhertiance.
+   
+   What are the attributes of prototype object?  It has a method and properties which any javscript object has. Here are some of the attributes which comes by default on any Object.
+   
+                            Properties: 
+                             1. __proto__
+                            Methods: 
+                             1. constructor
+                             2. hasOwnProperty
+                             3. isPrototypeOf
+                             4. propertyIsEnumerable
+                             5. toLocaleString
+                             6. toString
+                             7. valueOf
+                             8. __defineGetter__ and __defineSetter__
+                             9.__lookupGetter__ and __lookupSetter__
+    
+    
+
+            1. All the properties and methods of the Student Constructor  
+                  AND
+            2. All the properties and methods of the ProtoType Object
+            
+            Each instatiated object contains its own copy of properties and methods which  are applied from the custom constructor. However all the instatiated object will share the 
+            same copy of properties and methods which are applied from Prototype Object.
+
 /**
 
                                 LivingBeing   (noOfEyes, noOfHeads, eat(), move())
